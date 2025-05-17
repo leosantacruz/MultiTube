@@ -24,4 +24,4 @@ MultiTube Viewer te permite crear grupos de canales de YouTube, guardarlos y ver
 - `npm run lint` – Revisa que no hayas hecho lío 🧼  
 
 ## 📸 Captura
-![Preview](public/images/preview.png)
+![Preview](public/images/preview.jpg)
