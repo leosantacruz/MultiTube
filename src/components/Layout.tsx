@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       <header className="bg-gray-800 shadow-md">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="mx-auto px-4 py-3 flex justify-between items-center">
           <a href="/" className="text-xl font-bold tracking-tight">
             <img
               src="/images/multitube-logo.png"
@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </header>
 
-      <main className="container mx-auto p-4 flex-1">{children}</main>
+      <main className="w-full mx-auto p-4 flex-1">{children}</main>
 
       <footer className="bg-gray-800 py-3">
         <a
