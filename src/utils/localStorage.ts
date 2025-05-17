@@ -1,18 +1,19 @@
-import { ChannelGroup } from '../types';
+import { ChannelGroup } from "../types";
+import { defaultChannels } from "../data/defaultChannels";
 
-const STORAGE_KEY = 'youtube-multi-viewer-groups';
+const STORAGE_KEY = "youtube-multi-viewer-groups";
 
 /**
  * Load channel groups from localStorage
  */
 export const loadChannelGroups = (): ChannelGroup[] => {
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (!stored) return [];
-  
+  if (!stored) return defaultChannels;
+
   try {
     return JSON.parse(stored);
   } catch (error) {
-    console.error('Failed to parse stored channel groups:', error);
+    console.error("Failed to parse stored channel groups:", error);
     return [];
   }
 };
@@ -24,7 +25,7 @@ export const saveChannelGroups = (groups: ChannelGroup[]): void => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(groups));
   } catch (error) {
-    console.error('Failed to save channel groups:', error);
+    console.error("Failed to save channel groups:", error);
   }
 };
 

@@ -12,7 +12,6 @@ import {
   createGroupId,
 } from "../utils/localStorage";
 import { parseChannelUrls } from "../utils/youtubeUtils";
-import { defaultChannels } from "../data/defaultChannels";
 
 interface ChannelContextType {
   groups: ChannelGroup[];
@@ -44,7 +43,7 @@ export const ChannelProvider: React.FC<{ children: ReactNode }> = ({
 
   // Load channel groups from localStorage on initial render
   useEffect(() => {
-    const loadedGroups = loadChannelGroups() || defaultChannels;
+    const loadedGroups = loadChannelGroups();
     setGroups(loadedGroups);
 
     // If there are groups, set the first one as active
