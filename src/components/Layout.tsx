@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Navigation from "./Navigation";
+import { Github } from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -24,9 +25,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="container mx-auto p-4 flex-1">{children}</main>
 
       <footer className="bg-gray-800 py-3">
-        <div className="container mx-auto px-4 text-sm text-gray-400 text-center">
-          &copy; {new Date().getFullYear()} MultiTube
-        </div>
+        <a
+          href="https://github.com/leosantacruz/multitube"
+          target="_blank"
+          className="container mx-auto px-4 text-sm text-gray-400 hover:text-white hover:cursor-pointer text-center flex items-center justify-center gap-3"
+        >
+          Ver proyecto en Github <Github />
+        </a>
       </footer>
     </div>
   );
