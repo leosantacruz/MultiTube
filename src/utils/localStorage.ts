@@ -8,7 +8,7 @@ const STORAGE_KEY = "youtube-multi-viewer-groups";
  */
 export const loadChannelGroups = (): ChannelGroup[] => {
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (!stored) return defaultChannels;
+  if (!stored || stored === "[]") return defaultChannels;
 
   try {
     return JSON.parse(stored);

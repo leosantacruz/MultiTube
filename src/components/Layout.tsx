@@ -11,13 +11,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       <header className="bg-gray-800 shadow-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-xl font-bold tracking-tight">
+          <a href="/" className="text-xl font-bold tracking-tight">
             <img
               src="/images/multitube-logo.png"
               alt="Multitube Logo"
               width={180}
             />
-          </h1>
+          </a>
           <Navigation />
         </div>
       </header>
