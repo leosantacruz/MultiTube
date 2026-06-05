@@ -22,6 +22,8 @@ interface ChannelContextType {
 
   setActiveGroupId: (id: string | null) => void;
   toggleManagingGroups: () => void;
+  playGroup: (id: string) => void;
+  openLibrary: () => void;
   createGroup: (name: string, urlsString: string) => void;
   updateGroup: (id: string, name: string, urlsString: string) => void;
   deleteGroup: (id: string) => void;
@@ -65,6 +67,33 @@ export const ChannelProvider: React.FC<{ children: ReactNode }> = ({
   const toggleManagingGroups = () => {
     setIsManagingGroups((prev) => !prev);
     // Reset unmuted channel when switching views
+    setUnmutedChannelId(null);
+  };
+
+  // Launch a group in the player: make it active, reset playback, and switch view
+  const playGroup = (id: string) => {
+    setActiveGroupId(id);
+    setUnmutedChannelId(null);
+    setGroups((prev) =>
+      prev.map((group) =>
+        group.id === id
+          ? {
+              ...group,
+              channels: group.channels.map((channel) => ({
+                ...channel,
+                playing: true,
+                muted: true,
+              })),
+            }
+          : group
+      )
+    );
+    setIsManagingGroups(false);
+  };
+
+  // Return to the library/management view
+  const openLibrary = () => {
+    setIsManagingGroups(true);
     setUnmutedChannelId(null);
   };
 
@@ -219,6 +248,8 @@ export const ChannelProvider: React.FC<{ children: ReactNode }> = ({
     isManagingGroups,
     setActiveGroupId,
     toggleManagingGroups,
+    playGroup,
+    openLibrary,
     createGroup,
     updateGroup,
     deleteGroup,

@@ -1,21 +1,18 @@
 import React from 'react';
-import { ChannelProvider } from './contexts/ChannelContext';
-import Layout from './components/Layout';
-import GroupManager from './components/GroupManager';
-import ChannelGrid from './components/ChannelGrid';
-import { useChannels } from './contexts/ChannelContext';
+import { ChannelProvider, useChannels } from './contexts/ChannelContext';
+import Library from './components/Library';
+import Player from './components/Player';
 
 const AppContent: React.FC = () => {
   const { isManagingGroups } = useChannels();
-  
+
   return (
-    <Layout>
-      {isManagingGroups ? (
-        <GroupManager />
-      ) : (
-        <ChannelGrid />
-      )}
-    </Layout>
+    <div className="h-full">
+      {/* key forces a remount per screen so the mount animation plays on every transition */}
+      <div key={isManagingGroups ? 'library' : 'player'} className="h-full animate-screen-in">
+        {isManagingGroups ? <Library /> : <Player />}
+      </div>
+    </div>
   );
 };
 

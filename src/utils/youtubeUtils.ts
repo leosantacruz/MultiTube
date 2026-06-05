@@ -40,6 +40,16 @@ export const getEmbedUrl = (url: string): string | null => {
 };
 
 /**
+ * Get a YouTube thumbnail URL for a given video URL.
+ * Falls back through resolutions; `hqdefault` is the most universally available.
+ */
+export const getThumbnailUrl = (url: string): string | null => {
+  const videoId = extractYoutubeId(url);
+  if (!videoId) return null;
+  return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+};
+
+/**
  * Create a new channel object from URL
  */
 export const createChannel = (url: string): Channel | null => {
